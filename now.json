@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "builds": [{ "src": "backend/wsgi.py", "use": "@now/python" }],
+    "routes": [
+      { "src": "/static/(?<file>.+)", "dest": "/backend/static/\${file}" },
+      { "src": "/media/(?<file>.+)", "dest": "/backend/media/\${file}" },
+      { "src": "/favicon.ico", "dest": "/backend/static/favicon.ico" },
+      { "src": "/(.+)", "dest": "/backend/wsgi.py" }
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "backend.settings.production"
+    }
+  }
+  
